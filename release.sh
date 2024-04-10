@@ -10,6 +10,15 @@ init(){
     echo "┃ custom blog build publish sh script"
     echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     set -e
+
+    if [ $1 ]; then
+        if [ $1 == "build" ]; then
+            build
+        fi
+    else
+        debug
+    fi
+
 }
 
 # 调试运行
@@ -36,7 +45,7 @@ build(){
     tar -cvf blog.tar ./public/*
     echo "┃ build blog content finish"
 
-    publish(){
+    publish;
 }
 
 # 发布
