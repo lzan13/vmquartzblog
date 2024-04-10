@@ -5,16 +5,21 @@
 # Author: lzan13
 # WebSite: https://melove.net
 # -------------------------------------
+set -e
+
+if [ $1 ]; then
+    debug=$1
+else
+    debug="debug"
+fi
+
 init(){
     echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "┃ custom blog build publish sh script"
     echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    set -e
-
-    if [ $1 ]; then
-        if [ $1 == "build" ]; then
-            build
-        fi
+    echo "┃ input args $1"
+    if [ $debug == "build" ]; then
+        build
     else
         debug
     fi
@@ -42,22 +47,25 @@ build(){
     # 构建内容
     yarn build
     # 打包生成内容
-    tar -cvf blog.tar ./public/*
+    tar -cvf ./blog.tar ./public/*
     echo "┃ build blog content finish"
 
     publish;
+
+    rm -rf blog.tar
 }
 
 # 发布
 publish(){
     echo "| remove server content..."
-    ssh vmunt403a "rm -rf /www/wwwroot/melove.net/vmblog/*"
+    ssh vmunt403a "rm -rf /www/wwwroot/vmblog/blog.tar /www/wwwroot/vmblog/public"
     echo "┃ remove vmunt403a blog.tar and build success"
 
-    scp ./blog.tar vmunt403a:/www/wwwroot/melove.net/vmblog/blog.tar
+    scp ./blog.tar vmunt403a:/www/wwwroot/vmblog/blog.tar
     echo "┃ upload blog.tar to vmunt403a success"
 
-    ssh vmunt403a "tar -xvf /www/wwwroot/melove.net/vmblog/blog.tar -C /www/wwwroot/melove.net/vmblog/"
+    ssh vmunt403a "tar -xvf /www/wwwroot/vmblog/blog.tar -C /www/wwwroot/vmblog/"
+    ssh vmunt403a "chown -R root /www/wwwroot/vmblog/public"
     echo "┃ untar vmunt403a blog.tar success"
 }
 
