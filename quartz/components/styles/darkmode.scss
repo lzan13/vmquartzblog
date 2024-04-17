@@ -1,12 +1,41 @@
+.theme-control {
+  position: fixed;
+  right: 0px;
+  bottom: 72px;
+
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+
+  background: var(--gray);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.go-top {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+
+  & svg{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    fill: var(--dark);
+    transition: opacity 0.1s ease;
+  }
+}
 .darkmode {
-  position: relative;
   width: 20px;
   height: 20px;
-  margin: 0 10px;
+  padding: 10px;
 
   & > .toggle {
     display: none;
     box-sizing: border-box;
+  }
+  & > #darkmode-toggle{
+    width: 40px;
+    height: 40px;
   }
 
   & svg {
@@ -15,7 +44,7 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    top: calc(50% - 10px);
+    bottom: 0;
     fill: var(--darkgray);
     transition: opacity 0.1s ease;
   }

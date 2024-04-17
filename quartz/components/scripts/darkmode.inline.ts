@@ -37,4 +37,21 @@ document.addEventListener("nav", () => {
   const colorSchemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
   colorSchemeMediaQuery.addEventListener("change", themeChange)
   window.addCleanup(() => colorSchemeMediaQuery.removeEventListener("change", themeChange))
+
+  // 获取滚动条当前的位置
+  function getScrollTop() {
+    return window.pageYOffset !== undefined
+      ? window.pageYOffset
+      : (document.documentElement || document.body.parentNode || document.body).scrollTop
+  }
+  // 滚动到顶部
+  const scrollToTop = () => {
+    if (getScrollTop() > 0) {
+      window.scrollTo(0, 0)
+    }
+  }
+
+  // 监听点击事件
+  const goTop = document.querySelector("#go-top") as HTMLInputElement
+  goTop.addEventListener("click", scrollToTop)
 })
