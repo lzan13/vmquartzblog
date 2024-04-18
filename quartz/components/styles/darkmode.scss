@@ -16,7 +16,7 @@
   height: 30px;
   padding: 5px;
 
-  & svg{
+  & svg {
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -33,7 +33,7 @@
     display: none;
     box-sizing: border-box;
   }
-  & > #darkmode-toggle{
+  & > #darkmode-toggle {
     width: 40px;
     height: 40px;
   }
@@ -44,7 +44,7 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    bottom: 0;
+    bottom: 10px;
     fill: var(--darkgray);
     transition: opacity 0.1s ease;
   }
