@@ -1,0 +1,65 @@
+/* 文本高亮样式 */
+.cm-s-obsidian span.cm-formatting-highlight, .cm-s-obsidian span.cm-highlight,
+:is(.markdown-preview-view,.markdown-rendered) mark {
+  display: inline;
+  box-sizing: border-box;
+  background-color: rgba(0, 230, 39, 0.2);
+  background-size: 100% 100%;
+  background-position: 100% 100%;
+  border-radius: 6px;
+  padding: 0 0.2em;
+}
+
+/* 行内代码高亮样式 */
+/*实时编辑*/
+.markdown-source-view span.cm-inline-code {
+	padding:2px 4px;
+	margin-left:2px;
+	margin-right:2px;	
+}
+.theme-light .markdown-source-view span.cm-inline-code {
+	color:#fc7378e2;
+    font-weight: 600;
+}
+.theme-dark .markdown-source-view span.cm-inline-code{
+	color:#fc7378e2;
+    font-weight: 600;
+}
+/*阅读模式*/
+div p code {
+	padding:2px 4px;
+	margin-left:5px;
+	margin-right:5px;	
+}
+.theme-light div p code {
+	color:#fc7378e2;
+    font-weight: 600;
+}
+.theme-dark div p code {
+	color:#fc7378e2;
+    font-weight: 600;
+}
+
+/* 分割线样式 */
+/*阅读模式渐变色分割线*/
+.markdown-preview-view hr {
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, #ef201c, #e96036, #e6ef82, #e09a29, #41e249, #26c6da, #4e5ff2, #7e57c2, #de5fb8) 7;
+}
+/*实时模式渐变色分割线*/
+.markdown-source-view div.hr.cm-line hr {
+    border-top: 1px solid;
+    border-image: linear-gradient(to right, #ef201c, #e96036, #e6ef82, #e09a29, #41e249, #26c6da, #4e5ff2, #7e57c2, #de5fb8) 7;
+}
+
+/* Mermaid 样式优化*/
+.mermaid {
+    overflow: scroll;
+    scroll-behavior: auto;
+}
+
+
+/* callout 样式调整 */
+.callout{
+    padding: 16px;
+}
